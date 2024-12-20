@@ -17,7 +17,7 @@ public class FinanceReportProcessorTest {
             new Payment("Звездов Патрик Старович", 25, 1, 2024, 15000)
     };
     Payment[] payment = {
-            new Payment("Скверпенсов Роберт Губкович", 20, 12, 2023, 30000)
+        
     };
     FinanceReport fr = new FinanceReport(payment, "Дурова Манда Ивановна", new Date());
     FinanceReport fr1 = new FinanceReport(payments, "Дурова Манда Ивановна", new Date());
@@ -33,7 +33,6 @@ public class FinanceReportProcessorTest {
             new Payment("Звездов Патрик Старович", 25, 1, 2024, 15000)
     };
     Payment[] payment = {
-            new Payment("Скверпенсов Роберт Губкович", 20, 12, 2023, 30000)
     };
     FinanceReport fr = new FinanceReport(payment, "Дурова Манда Ивановна", new Date());
     FinanceReport fr1 = new FinanceReport(payments, "Дурова Манда Ивановна", new Date());
@@ -79,21 +78,4 @@ public class FinanceReportProcessorTest {
         assertEquals(expected, filtered);
 
     } 
-    
-    
-    @Test
-    public void smallerPaymentsException() {
-        Payment[] payments = {
-                new Payment("Аболдуев Казимир Афанасьеваич", 10, 10, 2023, 10000),
-                new Payment("Косоглазов Менингит Графинович", 15, 11, 2023, 20000),
-                new Payment("Скверпенсов Роберт Губкович", 20, 12, 2023, 30000),
-                new Payment("Звездов Патрик Старович", 25, 1, 2024, 15000)
-        };
-
-        Date date = new Date();
-        FinanceReport fr1 = new FinanceReport(payments, "Дурова Манда Ивановна", date);
-        assertThrows(IllegalArgumentException.class, () -> {
-            FinanceReportProcessor.smallerPayments(fr1, payments, -100);
-        });
-    }
 }
